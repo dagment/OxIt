@@ -1,5 +1,11 @@
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/bootstrap.css">
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Таблиця</title>
+</head>
+<body>
 <?php
              
 print '<table class="table table-bordered">';
@@ -26,4 +32,7 @@ print '<table class="table table-bordered">';
 
 	}
 print '</table>';
+?>
+</body>
+</html>
 

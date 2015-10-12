@@ -1,5 +1,11 @@
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/bootstrap.css">
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Введення даних в таблицю</title>
+</head>
+<body>
 <form class="form-signin" action="tabl.php" method="POST">
 <?php
 print '<table class="table table-bordered">';
@@ -30,8 +36,8 @@ print '<input type="hidden" value="' . $_POST['rad'] . '" name="rad">';
 print '<input type="hidden" value="' . $_POST['stovp'] . '" name="stovp">';
 
 ?>
-
 <button class="btn btn-large btn-primary" type="submit">Вивести таблицю</button>
 </form>
-
+</body>
+</html>
 
