@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <?php
              
 print '<table class="table table-bordered">';
