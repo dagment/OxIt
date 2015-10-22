@@ -14,13 +14,10 @@ if (!$editor) {
 }
 
 require('base/db.php');
-
 if (isset($_POST['yes'])) {
 try {
     $stmt = $conn->prepare("DELETE FROM content WHERE id = :id"); //<<<  З цим проблеми!!!
-	$stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);//<<<  Чомусь ГЕТ не працює(
-	// Виконуємо запит, результат запиту знаходиться у змінні $status.
-    // Якщо $status рівне TRUE, тоді запит відбувся успішно.
+	$stmt->bindParam(':id', $_POST['idd'], PDO::PARAM_INT);//<<<  Чомусь ГЕТ не працює(
     $status = $stmt->execute();
 
   } catch(PDOException $e) {
@@ -51,6 +48,7 @@ elseif (isset($_POST['no'])) {
 	<h1> Ви точно бажаєте видалити цю статтю?</h1>
 	<input type="submit" name="yes" value="Так">
 	<input type="submit" name="no" value="Ні">
+	<input type="hidden" name="idd" value="<?php print $_GET['id'];?>">
 </form>
 
 

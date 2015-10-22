@@ -20,13 +20,13 @@ require('base/db.php');
 // Якщо ми отримали дані з ПОСТа, тоді обробляємо їх та вставляємо.
 if (isset($_POST['submit'])) {
 
-  try {
+try {
     $stmt = $conn->prepare('
 	UPDATE content
 	SET
 		title=:title, short_desc=:short_desc, full_desc=:full_desc, timestamp=:timestamp
 		WHERE id = :id'); //<<<  З цим проблеми!!!
-	$stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT); //<--  Чомусь ГЕТ не працює(
+	$stmt->bindParam(':id', $_POST['idd'], PDO::PARAM_INT); //<--  Чомусь ГЕТ не працює(
     // Обрізаємо усі теги у загловку.
     $stmt->bindParam(':title', strip_tags($_POST['title']));
 
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
   // При успішному запиту перенаправляємо користувача на сторінку перегляду статті.
   if ($status) {
     // За допомогою методу lastInsertId() ми маємо змогу отрмати ІД статті, що була вставлена.
-    header("Location: article.php?id=lastUpdateId()");
+    header("Location: article.php?id=".$_POST['idd']);
     exit;
   }
   else {
@@ -81,12 +81,12 @@ if (isset($_POST['submit'])) {
   </div>
 
   <div class="field-item">
-    <label for="date">День створення</label>
+    <label for="date">День редагування</label>
     <input type="date" name="date" id="date" required value="<?php print date('Y-m-d')?>">
-    <label for="time">Час створення</label>
+    <label for="time">Час редагування</label>
     <input type="time" name="time" id="time" required value="<?php print date('G:i')?>">
   </div>
-
+	<input type="hidden" name="idd" value="<?php print $_GET['id'];?>">
   <input type="submit" name="submit" value="Зберегти">
 
 </form>
