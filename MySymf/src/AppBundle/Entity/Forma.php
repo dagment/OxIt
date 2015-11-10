@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 
 class Forma
 {
+	
     protected $firstName;
     protected $secondName;
 
