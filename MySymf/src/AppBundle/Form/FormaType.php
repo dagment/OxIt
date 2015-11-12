@@ -19,6 +19,7 @@ class FormaType extends AbstractType
             ->add('firstName', 'text')
             ->add('secondName', 'text')
 			->add('save', 'submit', array('label' => 'Lets go!'))
+			->setMethod('POST')
         ;
     }
     
